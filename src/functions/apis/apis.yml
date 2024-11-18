@@ -1,0 +1,4 @@
+# APIS
+ - ${file(./src/functions/apis/customers/create/config.yml)}
+ - ${file(./src/functions/apis/customers/view/config.yml)}
+

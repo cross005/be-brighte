@@ -1,0 +1,13 @@
+customer_view:
+  handler: src/functions/apis/customers/view/handler.execute
+  memorySize: 512
+  events:
+    - http:
+        path: /customers/view
+        method: get
+        timeout: 300
+        cors: true
+  # warmup:
+  #   default:
+  #     enabled: 
+  #       - prod

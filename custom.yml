@@ -1,0 +1,37 @@
+PROJECT_NAME: ${env:PROJECT_NAME}
+SERVICE_NAME: ${env:SERVICE_NAME}
+
+# ENVIRONMENT
+STAGE: ${env:STAGE}
+REGION: ${env:REGION}
+ROLE_ARN: ${env:ROLE_ARN}
+
+# SECURITY
+SECURITY_GRP: ${env:SECURITY_GRP}
+SUBNET_01: ${env:SUBNET_01}
+SUBNET_02: ${env:SUBNET_02}
+
+#MYSQL
+MYSQLDB_URL: ${env:MYSQLDB_URL}
+MYSQLDB_NAME: ${env:MYSQLDB_NAME}
+MYSQLDB_USERNAME: ${env:MYSQLDB_USERNAME}
+MYSQLDB_PASSWORD: ${env:MYSQLDB_PASSWORD}
+MYSQLDB_PORT: ${env:MYSQLDB_PORT}
+
+#CARBON
+CARBON_TIMEZONE: ${env:CARBON_TIMEZONE}
+
+
+warmup:
+  default:
+    folderName: '.warmup'
+    cleanFolder: false
+    memorySize: 256
+    name: ${env:SERVICE_NAME}-${env:STAGE}-warmer
+    enabled: true
+    concurrency: 10
+    package:
+      individually: false
+
+# Lambda Layer
+LAYER_ARN: ${env:LAYER_ARN}

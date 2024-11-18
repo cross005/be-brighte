@@ -1,0 +1,13 @@
+customer_create:
+  handler: src/functions/apis/customers/create/handler.execute
+  memorySize: 512
+  events:
+    - http:
+        path: /customers/create
+        method: post
+        timeout: 300
+        cors: true
+  # warmup:
+  #   default:
+  #     enabled: 
+  #       - prod

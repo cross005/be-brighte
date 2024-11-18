@@ -1,0 +1,11 @@
+node_modules
+dist
+.env
+.idea
+.build
+.DS_Store
+environment
+.vscode
+.terraform
+*.zip
+package-lock.json

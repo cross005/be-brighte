@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "preserveConstEnums": true,
+        "strictNullChecks": true,
+        "sourceMap": true,
+        "allowJs": true,
+        "target": "es5",
+        "module": "CommonJS",
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "strict": true,
+        "emitDecoratorMetadata": true,
+        "esModuleInterop": true,
+        "strictPropertyInitialization": false
+    },
+    "include": ["src/**/*.ts", "tests/**/*"],
+    "exclude": ["node_modules"]
+}

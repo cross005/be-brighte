@@ -1,0 +1,75 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: ${self:custom.SERVICE_NAME}-api
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-plugin-typescript
+  - serverless-offline
+  - serverless-plugin-warmup
+  - serverless-api-compression
+# app and org for use with dashboard.serverless.com
+#app: your-app-name
+#org: your-org-name
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X"
+
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  versionFunctions: false
+  endpointType: REGIONAL
+  memorySize: 512 # optional, in MB, default is 1024
+  timeout: 30 # optional, in seconds, default is 6
+  role: ${self:custom.ROLE_ARN}
+  region: ${self:custom.REGION}
+  stage: ${opt:stage, 'local'}
+  profile: ${opt:profile, 'default'}
+  tags:
+    Project: ${self:custom.PROJECT_NAME}
+    Environment: ${self:custom.STAGE}
+    
+  # vpc: # Optional VPC. But if you use VPC then both subproperties (securityGroupIds and subnetIds) are required
+  #   securityGroupIds:
+  #     - ${self:custom.SECURITY_GRP}
+  #   subnetIds:
+  #     - ${self:custom.SUBNET_01}
+  #     - ${self:custom.SUBNET_02}
+  apiGateway:
+    minimumCompressionSize: 0
+
+# you can add packaging information here
+package:
+  exclude:
+    - tests/*
+    - .env.example
+    - .eslintrc.js
+    - .prettierrc
+    - custom.yml
+    - package.json
+    - package-lock.json
+    - resources.yml
+    - serverless-apis.yml
+    - tsconfig.json
+    - node_modules/**
+
+functions: ${file(./src/functions/apis/apis.yml)}
+
+custom: ${file(./custom.yml)}
+resources: ${file(./resources.yml)}
+
+
+
