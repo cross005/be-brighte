@@ -7,7 +7,3 @@ customer_create:
         method: post
         timeout: 300
         cors: true
-  # warmup:
-  #   default:
-  #     enabled: 
-  #       - prod

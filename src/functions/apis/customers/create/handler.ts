@@ -6,8 +6,9 @@ import { AppDataSource, getDatabaseConnection } from "../../../../database/data-
 import { CustomerCreateRequest } from './requests';
 import { CustomerRepository } from '../../../../repositories/CustomerRepository';
 import Validate from './validate';
+import { APIHttpResponse } from '../../../../libs/Contracts/APIHttpResponse';
 
-export async function execute(event: any): Promise<any> {
+export async function execute(event: any): Promise<APIHttpResponse> {
     try {
         const dataSource = await getDatabaseConnection();
         let body: CustomerCreateRequest = JSON.parse(event.body)
